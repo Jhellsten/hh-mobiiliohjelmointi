@@ -9,7 +9,6 @@ export default function GuessingGame() {
 	const [answer] = useState<number>(Math.floor(Math.random() * 100) + 1)
 
 	const handleGuess = () => {
-		console.log(number, answer)
 		if ((number || 0) > answer) {
 			setText(`Your guess ${number} is too high`)
 		} else if ((number || 0) < answer) {
