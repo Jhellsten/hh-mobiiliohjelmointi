@@ -1,5 +1,13 @@
 import React, { useState } from 'react'
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native'
+import {
+	Button,
+	StyleSheet,
+	Text,
+	TextInput,
+	TouchableOpacity,
+	View,
+} from 'react-native'
+import CustomButton from './CustomButton'
 
 export default function Calculator() {
 	const [number1, setNumber1] = useState<number | null>(null)
@@ -34,13 +42,9 @@ export default function Calculator() {
 					keyboardType='numeric'
 				/>
 			</View>
-			<View style={styles.inputContainer}>
-				<View style={styles.button}>
-					<Button title={'+'} onPress={() => handleCalculate('+')} />
-				</View>
-				<View style={styles.button}>
-					<Button title={'-'} onPress={() => handleCalculate('-')} />
-				</View>
+			<View style={styles.buttonContainer}>
+				<CustomButton text={'+'} handlePress={() => handleCalculate('+')} />
+				<CustomButton text={'-'} handlePress={() => handleCalculate('-')} />
 			</View>
 			{result !== null && <Text>{result.toString()}</Text>}
 		</View>
@@ -71,13 +75,9 @@ export const styles = StyleSheet.create({
 		borderWidth: 2,
 		padding: 10,
 	},
-	button: {
-		width: '25%',
-		color: 'black',
-		margin: 10,
-		backgroundColor: 'blue',
-		alignItems: 'center',
-		justifyContent: 'center',
-		borderRadius: 4,
+	buttonContainer: {
+		width: '60%',
+		marginBottom: 20,
+		flexDirection: 'row',
 	},
 })

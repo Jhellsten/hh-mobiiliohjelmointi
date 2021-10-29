@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Button, Text, TextInput, View } from 'react-native'
 import { styles } from './Calculator'
+import CustomButton from './CustomButton'
 
 export default function GuessingGame() {
 	const [number, setNumber] = useState<number | null>(null)
@@ -30,12 +31,8 @@ export default function GuessingGame() {
 				/>
 			</View>
 			<View>
-				<View style={styles.button}>
-					<Button
-						color={'white'}
-						title={'Make a guess'}
-						onPress={handleGuess}
-					/>
+				<View>
+					<CustomButton text={'Make a guess'} handlePress={handleGuess} />
 				</View>
 			</View>
 		</View>

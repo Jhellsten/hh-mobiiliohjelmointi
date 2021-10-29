@@ -7,6 +7,7 @@ import {
 	TextInput,
 	View,
 } from 'react-native'
+import CustomButton from './CustomButton'
 
 export default function ShoppingList() {
 	const [listText, setListText] = useState<string>('')
@@ -24,17 +25,16 @@ export default function ShoppingList() {
 			</View>
 			<View style={styles.inputContainer}>
 				<View style={styles.button}>
-					<Button
-						color={'white'}
-						title={'Add'}
-						onPress={() => {
+					<CustomButton
+						text={'Add'}
+						handlePress={() => {
 							setList([...list, listText])
 							setListText('')
 						}}
 					/>
 				</View>
 				<View style={styles.button}>
-					<Button color={'white'} title={'Clear'} onPress={() => setList([])} />
+					<CustomButton text={'Clear'} handlePress={() => setList([])} />
 				</View>
 			</View>
 			<Text style={styles.shoppinglistItem}>{'Shopping list'}</Text>
@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
 	inputContainer: {
 		flexDirection: 'row',
 		alignContent: 'center',
+		justifyContent: 'center',
 		width: '60%',
 		fontSize: 20,
 	},
@@ -71,13 +72,8 @@ const styles = StyleSheet.create({
 		padding: 10,
 	},
 	button: {
-		width: '25%',
-		color: 'black',
-		margin: 10,
-		backgroundColor: 'blue',
-		alignItems: 'center',
-		justifyContent: 'center',
-		borderRadius: 4,
+		width: '40%',
+		marginVertical: 10,
 	},
 	shoppinglistItem: {
 		color: 'blue',

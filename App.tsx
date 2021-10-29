@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { Button, StyleSheet, Text, View } from 'react-native'
 import Calculator from './components/Calculator'
 import CalculatorWithHistory from './components/CalculatorWithHistory'
+import CustomButton from './components/CustomButton'
 import GuessingGame from './components/GuessingGame'
 import ShoppingList from './components/ShoppinList'
 
@@ -47,20 +48,18 @@ export default function App() {
 					SelectableApps.map((app, i) => {
 						return (
 							<View style={styles.button} key={i}>
-								<Button
-									color={'white'}
-									title={app}
-									onPress={() => handleAppSelect(i)}
+								<CustomButton
+									text={app}
+									handlePress={() => handleAppSelect(i)}
 								/>
 							</View>
 						)
 					})
 				) : (
 					<View style={styles.button}>
-						<Button
-							color={'white'}
-							title={'Close'}
-							onPress={() => handleAppSelect(selectedApp)}
+						<CustomButton
+							text={'Close'}
+							handlePress={() => handleAppSelect(selectedApp)}
 						/>
 					</View>
 				)}

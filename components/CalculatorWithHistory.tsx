@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Button, StyleSheet, Text, TextInput, View } from 'react-native'
+import CustomButton from './CustomButton'
 
 export default function CalculatorWithHistory() {
 	const [number1, setNumber1] = useState<number | null>(null)
@@ -50,18 +51,10 @@ export default function CalculatorWithHistory() {
 			</View>
 			<View style={styles.inputContainer}>
 				<View style={styles.button}>
-					<Button
-						color={'white'}
-						title={'+'}
-						onPress={() => handleCalculate('+')}
-					/>
+					<CustomButton text={'+'} handlePress={() => handleCalculate('+')} />
 				</View>
 				<View style={styles.button}>
-					<Button
-						color={'white'}
-						title={'-'}
-						onPress={() => handleCalculate('-')}
-					/>
+					<CustomButton text={'-'} handlePress={() => handleCalculate('-')} />
 				</View>
 			</View>
 			<Text>{'History'}</Text>
