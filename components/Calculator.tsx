@@ -1,26 +1,31 @@
 import React, { useState } from 'react'
-import {
-	Button,
-	StyleSheet,
-	Text,
-	TextInput,
-	TouchableOpacity,
-	View,
-} from 'react-native'
+import { StyleSheet, Text, TextInput, View } from 'react-native'
+import { RouteNavigationProps } from '../App'
 import CustomButton from './CustomButton'
 
-export default function Calculator() {
+export default function Calculator({
+	navigation,
+}: RouteNavigationProps<'Calculator'>) {
 	const [number1, setNumber1] = useState<number | null>(null)
 	const [number2, setNumber2] = useState<number | null>(null)
 	const [result, setResult] = useState<number | null>(null)
+	const [numberList, setNumberlist] = useState<string[]>([])
 
 	const handleCalculate = (operator: '+' | '-') => {
 		switch (operator) {
 			case '+':
 				setResult((number1 || 0) + (number2 || 0))
+				setNumberlist([
+					...numberList,
+					`${number1} + ${number2} = ${(number1 || 0) + (number2 || 0)}`,
+				])
 				break
 			case '-':
 				setResult((number1 || 0) - (number2 || 0))
+				setNumberlist([
+					...numberList,
+					`${number1} - ${number2} = ${(number1 || 0) - (number2 || 0)}`,
+				])
 				break
 
 			default:
@@ -45,6 +50,10 @@ export default function Calculator() {
 			<View style={styles.buttonContainer}>
 				<CustomButton text={'+'} handlePress={() => handleCalculate('+')} />
 				<CustomButton text={'-'} handlePress={() => handleCalculate('-')} />
+				<CustomButton
+					text={'History'}
+					handlePress={() => navigation.navigate('History', { numberList })}
+				/>
 			</View>
 			{result !== null && <Text>{result.toString()}</Text>}
 		</View>
@@ -53,6 +62,7 @@ export default function Calculator() {
 
 export const styles = StyleSheet.create({
 	container: {
+		flex: 1,
 		backgroundColor: '#fff',
 		alignItems: 'center',
 		justifyContent: 'center',
@@ -79,5 +89,6 @@ export const styles = StyleSheet.create({
 		width: '60%',
 		marginBottom: 20,
 		flexDirection: 'row',
+		justifyContent: 'center',
 	},
 })
