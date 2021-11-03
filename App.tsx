@@ -7,6 +7,7 @@ import { Ionicons } from '@expo/vector-icons'
 import History from './components/History'
 import Calculator from './components/Calculator'
 import Home from './Screens/Home'
+import RecipeFinder from './Screens/RecipeFinder'
 
 type RootStackParamList = {
 	Home: undefined
@@ -14,6 +15,7 @@ type RootStackParamList = {
 	CalculatorWithHistory: undefined
 	ShoppingList: undefined
 	History: { numberList: string[] }
+	RecipeFinder: undefined
 }
 
 export type RouteNavigationProps<T extends keyof RootStackParamList> =
@@ -29,6 +31,7 @@ export default function App() {
 				<Stack.Screen name='Home' component={Home} />
 				<Stack.Screen name='Calculator' component={Calculator} />
 				<Stack.Screen name='History' component={History} />
+				<Stack.Screen name='RecipeFinder' component={RecipeFinder} />
 			</Stack.Navigator>
 			{/* 
 			If we want to use Tab navigator later on

@@ -15,6 +15,12 @@ export default function Home({ navigation }: RouteNavigationProps<'Home'>) {
 						handlePress={() => navigation.navigate('Calculator')}
 					/>
 				</View>
+				<View style={styles.button}>
+					<CustomButton
+						text={'Recipe finder'}
+						handlePress={() => navigation.navigate('RecipeFinder')}
+					/>
+				</View>
 			</View>
 			<StatusBar style='auto' />
 		</View>
@@ -34,7 +40,7 @@ const styles = StyleSheet.create({
 	},
 	buttonContainer: {
 		alignItems: 'center',
-		justifyContent: 'center',
+		justifyContent: 'space-around',
 		marginBottom: '5%',
 	},
 	button: {
