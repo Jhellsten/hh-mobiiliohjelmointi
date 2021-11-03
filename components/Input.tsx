@@ -1,19 +1,28 @@
 import { StatusBar } from 'expo-status-bar'
 import React, { useState } from 'react'
-import { StyleProp, StyleSheet, Text, TextInput, View } from 'react-native'
+import {
+	StyleProp,
+	StyleSheet,
+	Text,
+	TextInput,
+	TextInputProps,
+	View,
+} from 'react-native'
 
 type Props = {
 	value: string
 	handleChange: (e: any) => void
+	type?: TextInputProps['keyboardType']
 }
 
-export default function CustomInput({ value, handleChange }: Props) {
+export default function CustomInput({ value, handleChange, type }: Props) {
 	return (
 		<View style={inputStyles.inputContainer}>
 			<TextInput
 				style={inputStyles.input}
 				value={value}
 				onChangeText={(text) => handleChange(text)}
+				keyboardType={type}
 			/>
 		</View>
 	)

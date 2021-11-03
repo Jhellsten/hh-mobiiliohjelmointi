@@ -21,6 +21,12 @@ export default function Home({ navigation }: RouteNavigationProps<'Home'>) {
 						handlePress={() => navigation.navigate('RecipeFinder')}
 					/>
 				</View>
+				<View style={styles.button}>
+					<CustomButton
+						text={'Euro converter'}
+						handlePress={() => navigation.navigate('EuroConverter')}
+					/>
+				</View>
 			</View>
 			<StatusBar style='auto' />
 		</View>
