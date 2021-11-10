@@ -27,6 +27,22 @@ export default function Home({ navigation }: RouteNavigationProps<'Home'>) {
 						handlePress={() => navigation.navigate('EuroConverter')}
 					/>
 				</View>
+				<View style={styles.button}>
+					<CustomButton
+						text={'Maps'}
+						handlePress={() =>
+							navigation.navigate('GoogleMapView', { restaurants: false })
+						}
+					/>
+				</View>
+				<View style={styles.button}>
+					<CustomButton
+						text={'Restaurant search'}
+						handlePress={() =>
+							navigation.navigate('GoogleMapView', { restaurants: true })
+						}
+					/>
+				</View>
 			</View>
 			<StatusBar style='auto' />
 		</View>

@@ -19,7 +19,7 @@ const EuroConverter = (props: Props) => {
 	const [convertedValue, setConvertedValue] = useState<string>('0')
 	const [userInput, setUserInput] = useState<string>('0')
 	const [selectedRate, setSelectedRate] = useState<number>(0.848602)
-	const apiKey = ''
+	const apiKey = 'b869cb66a48379f18a63efb7de1d5282'
 
 	useEffect(() => {
 		const getRates = async () => {

@@ -9,6 +9,7 @@ import Calculator from './components/Calculator'
 import Home from './Screens/Home'
 import RecipeFinder from './Screens/RecipeFinder'
 import EuroConverter from './Screens/EuroConverter'
+import GoogleMapView from './Screens/GoogleMapView'
 
 type RootStackParamList = {
 	Home: undefined
@@ -18,6 +19,7 @@ type RootStackParamList = {
 	History: { numberList: string[] }
 	RecipeFinder: undefined
 	EuroConverter: undefined
+	GoogleMapView: { restaurants: boolean }
 }
 
 export type RouteNavigationProps<T extends keyof RootStackParamList> =
@@ -35,6 +37,7 @@ export default function App() {
 				<Stack.Screen name='History' component={History} />
 				<Stack.Screen name='RecipeFinder' component={RecipeFinder} />
 				<Stack.Screen name='EuroConverter' component={EuroConverter} />
+				<Stack.Screen name='GoogleMapView' component={GoogleMapView} />
 			</Stack.Navigator>
 			{/* 
 			If we want to use Tab navigator later on

@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "mobiiliohjelmointi",
-    "slug": "mobiiliohjelmointi",
+    "name": "HH mobiiliohjelmointi-kurssi",
+    "slug": "hh-mobiiliohjelmointi-kurssi",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -27,6 +27,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "This is app for mobile development course on Haaga-Helia University of Applied Sciences",
+    "githubUrl": "https://github.com/Jhellsten/hh-mobiiliohjelmointi"
   }
 }
