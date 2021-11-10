@@ -112,7 +112,7 @@ const GoogleMapView = ({ route }: RouteNavigationProps<'GoogleMapView'>) => {
 			try {
 				let { status } = await Location.requestForegroundPermissionsAsync()
 				if (status !== 'granted') {
-					setErrorMsg('Permission to access location was denied')
+					alert('Permission to access location was denied')
 					return
 				}
 
