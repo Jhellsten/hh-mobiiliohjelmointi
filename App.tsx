@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createStackNavigator, StackScreenProps } from '@react-navigation/stack'
@@ -10,6 +10,8 @@ import Home from './Screens/Home'
 import RecipeFinder from './Screens/RecipeFinder'
 import EuroConverter from './Screens/EuroConverter'
 import GoogleMapView from './Screens/GoogleMapView'
+import { createShoppingList } from './services/db'
+import ShoppingList from './components/ShoppinList'
 
 type RootStackParamList = {
 	Home: undefined
@@ -29,6 +31,14 @@ export default function App() {
 	// const Tab = createBottomTabNavigator()
 	const Stack = createStackNavigator<RootStackParamList>()
 
+	useEffect(() => {
+		try {
+			createShoppingList()
+		} catch (error) {
+			alert('error')
+		}
+	}, [])
+
 	return (
 		<NavigationContainer>
 			<Stack.Navigator>
@@ -38,6 +48,7 @@ export default function App() {
 				<Stack.Screen name='RecipeFinder' component={RecipeFinder} />
 				<Stack.Screen name='EuroConverter' component={EuroConverter} />
 				<Stack.Screen name='GoogleMapView' component={GoogleMapView} />
+				<Stack.Screen name='ShoppingList' component={ShoppingList} />
 			</Stack.Navigator>
 			{/* 
 			If we want to use Tab navigator later on
