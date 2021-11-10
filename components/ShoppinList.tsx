@@ -47,17 +47,23 @@ export default function ShoppingList() {
 		<View style={styles.container}>
 			<Text>Welcome to Shopping list!</Text>
 			<View style={styles.inputContainer}>
-				<TextInput
-					style={styles.input}
-					onChangeText={(value) => setListText(value)}
-					value={listText}
-				/>
-				<TextInput
-					style={styles.input}
-					onChangeText={(value) => setListAmount(value)}
-					value={listAmount}
-					keyboardType={'number-pad'}
-				/>
+				<View>
+					<Text>{'Product'}</Text>
+					<TextInput
+						style={styles.input}
+						onChangeText={(value) => setListText(value)}
+						value={listText}
+					/>
+				</View>
+				<View>
+					<Text>{'Amount'}</Text>
+					<TextInput
+						style={[styles.input, styles.amountInput]}
+						onChangeText={(value) => setListAmount(value)}
+						value={listAmount}
+						keyboardType={'number-pad'}
+					/>
+				</View>
 			</View>
 			<View style={styles.inputContainer}>
 				<View style={styles.button}>
@@ -79,7 +85,6 @@ export default function ShoppingList() {
 					alignItems: 'center',
 				}}
 				renderItem={({ item }: any) => {
-					console.log(item)
 					return (
 						<View key={item.id} style={styles.itemStyle}>
 							<Text style={styles.shoppinglistItem} key={item.id}>
@@ -108,16 +113,16 @@ const styles = StyleSheet.create({
 		paddingTop: 20,
 	},
 	inputContainer: {
-		flexDirection: 'row',
+		marginTop: 20,
+		flexDirection: 'column',
 		alignContent: 'center',
-		justifyContent: 'center',
+		justifyContent: 'space-around',
 		width: '60%',
 		fontSize: 20,
 	},
 	input: {
-		width: '50%',
+		width: 200,
 		color: 'black',
-		margin: 10,
 		backgroundColor: '#fff',
 		alignItems: 'center',
 		justifyContent: 'center',
@@ -126,8 +131,11 @@ const styles = StyleSheet.create({
 		borderWidth: 2,
 		padding: 10,
 	},
+	amountInput: {
+		width: 75,
+	},
 	button: {
-		width: '40%',
+		width: '50%',
 		marginVertical: 10,
 	},
 	shoppinglistItem: {
