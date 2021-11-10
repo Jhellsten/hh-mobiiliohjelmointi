@@ -1,19 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import {
-	Button,
-	FlatList,
-	StyleSheet,
-	Text,
-	TextInput,
-	View,
-} from 'react-native'
-import { Ionicons } from '@expo/vector-icons'
+import { FlatList, StyleSheet, Text, TextInput, View } from 'react-native'
 import {
 	deleteItem,
 	saveItem,
 	ShoppingListItem,
 	ShoppingListItemSaveType,
-	ShoppingListType,
 	updateList,
 } from '../services/db'
 import CustomButton from './CustomButton'
@@ -42,7 +33,6 @@ export default function ShoppingList() {
 		}
 	}
 
-	console.log(list)
 	return (
 		<View style={styles.container}>
 			<Text>Welcome to Shopping list!</Text>
