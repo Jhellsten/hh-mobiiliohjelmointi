@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
 	Button,
 	FlatList,
@@ -7,12 +7,42 @@ import {
 	TextInput,
 	View,
 } from 'react-native'
+import { Ionicons } from '@expo/vector-icons'
+import {
+	deleteItem,
+	saveItem,
+	ShoppingListItem,
+	ShoppingListItemSaveType,
+	ShoppingListType,
+	updateList,
+} from '../services/db'
 import CustomButton from './CustomButton'
 
 export default function ShoppingList() {
 	const [listText, setListText] = useState<string>('')
-	const [list, setList] = useState<string[]>([])
+	const [listAmount, setListAmount] = useState<string>('')
+	const [list, setList] = useState<ShoppingListItem[]>([])
 
+	useEffect(() => {
+		try {
+			updateList(setList)
+		} catch (error) {
+			alert(error)
+		}
+	}, [])
+
+	const handleSaveItem = (item: ShoppingListItemSaveType) => {
+		try {
+			saveItem(item)
+			setListAmount('')
+			setListText('')
+			updateList(setList)
+		} catch (error) {
+			alert(error)
+		}
+	}
+
+	console.log(list)
 	return (
 		<View style={styles.container}>
 			<Text>Welcome to Shopping list!</Text>
@@ -22,25 +52,48 @@ export default function ShoppingList() {
 					onChangeText={(value) => setListText(value)}
 					value={listText}
 				/>
+				<TextInput
+					style={styles.input}
+					onChangeText={(value) => setListAmount(value)}
+					value={listAmount}
+					keyboardType={'number-pad'}
+				/>
 			</View>
 			<View style={styles.inputContainer}>
 				<View style={styles.button}>
 					<CustomButton
-						text={'Add'}
+						text={'Save'}
 						handlePress={() => {
-							setList([...list, listText])
-							setListText('')
+							handleSaveItem({ product: listText, amount: listAmount })
+							updateList(setList)
 						}}
 					/>
-				</View>
-				<View style={styles.button}>
-					<CustomButton text={'Clear'} handlePress={() => setList([])} />
 				</View>
 			</View>
 			<Text style={styles.shoppinglistItem}>{'Shopping list'}</Text>
 			<FlatList
 				data={list}
-				renderItem={({ item }) => <Text key={item}>{item}</Text>}
+				contentContainerStyle={{
+					flex: 1,
+					justifyContent: 'flex-start',
+					alignItems: 'center',
+				}}
+				renderItem={({ item }: any) => {
+					console.log(item)
+					return (
+						<View key={item.id} style={styles.itemStyle}>
+							<Text style={styles.shoppinglistItem} key={item.id}>
+								{item.product}, {item.amount}
+							</Text>
+							<Text
+								onPress={() => deleteItem(item.id)}
+								style={styles.itemTextStyle}
+							>
+								{'Bought'}
+							</Text>
+						</View>
+					)
+				}}
 			/>
 		</View>
 	)
@@ -48,9 +101,11 @@ export default function ShoppingList() {
 
 const styles = StyleSheet.create({
 	container: {
+		flex: 1,
 		backgroundColor: '#fff',
-		alignItems: 'flex-start',
+		alignItems: 'center',
 		justifyContent: 'space-between',
+		paddingTop: 20,
 	},
 	inputContainer: {
 		flexDirection: 'row',
@@ -79,5 +134,16 @@ const styles = StyleSheet.create({
 		color: 'blue',
 		marginVertical: 10,
 		fontSize: 20,
+	},
+	itemStyle: {
+		flexDirection: 'row',
+		justifyContent: 'flex-start',
+		alignItems: 'center',
+		width: '70%',
+	},
+	itemTextStyle: {
+		marginLeft: 'auto',
+		color: 'green',
+		fontSize: 12,
 	},
 })

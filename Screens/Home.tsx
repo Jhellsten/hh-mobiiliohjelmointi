@@ -43,6 +43,12 @@ export default function Home({ navigation }: RouteNavigationProps<'Home'>) {
 						}
 					/>
 				</View>
+				<View style={styles.button}>
+					<CustomButton
+						text={'Shopping list'}
+						handlePress={() => navigation.navigate('ShoppingList')}
+					/>
+				</View>
 			</View>
 			<StatusBar style='auto' />
 		</View>
