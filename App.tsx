@@ -13,6 +13,7 @@ import GoogleMapView from './Screens/GoogleMapView'
 import { createShoppingList } from './services/db'
 import ShoppingList from './components/ShoppinList'
 import ShoppingListFirebase from './components/ShoppingListFirebase'
+import ContactList from './Screens/Contacts'
 
 type RootStackParamList = {
 	Home: undefined
@@ -20,6 +21,7 @@ type RootStackParamList = {
 	CalculatorWithHistory: undefined
 	ShoppingList: undefined
 	ShoppingListFirebase: undefined
+	Contacts: undefined
 	History: { numberList: string[] }
 	RecipeFinder: undefined
 	EuroConverter: undefined
@@ -55,6 +57,7 @@ export default function App() {
 					name='ShoppingListFirebase'
 					component={ShoppingListFirebase}
 				/>
+				<Stack.Screen name='Contacts' component={ContactList} />
 			</Stack.Navigator>
 			{/* 
 			If we want to use Tab navigator later on

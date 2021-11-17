@@ -55,6 +55,12 @@ export default function Home({ navigation }: RouteNavigationProps<'Home'>) {
 						handlePress={() => navigation.navigate('ShoppingListFirebase')}
 					/>
 				</View>
+				<View style={styles.button}>
+					<CustomButton
+						text={'Contact list'}
+						handlePress={() => navigation.navigate('Contacts')}
+					/>
+				</View>
 			</View>
 			<StatusBar style='auto' />
 		</View>
