@@ -3,7 +3,7 @@ import * as SQLite from 'expo-sqlite'
 const db = SQLite.openDatabase('shoppingList.db')
 
 export type ShoppingListItem = {
-	id: number
+	id: number | string
 	product: string
 	amount: string
 }

@@ -5,14 +5,13 @@ import CustomInput from '../components/Input'
 import * as Location from 'expo-location'
 import CustomButton from '../components/CustomButton'
 import { RouteNavigationProps } from '../App'
+import { googleMapsApiKey } from '../env'
 
 type MarkerItem = {
 	latitude: number
 	longitude: number
 	title: string
 }
-
-const apiKey = ''
 
 const GoogleMapView = ({ route }: RouteNavigationProps<'GoogleMapView'>) => {
 	const { restaurants } = route.params
@@ -44,13 +43,13 @@ const GoogleMapView = ({ route }: RouteNavigationProps<'GoogleMapView'>) => {
 	const getRestaurants = async (text: string) => {
 		try {
 			const location = await fetch(
-				`https://maps.googleapis.com/maps/api/geocode/json?components=fi&address=${text}&radius=500&key=${apiKey}`
+				`https://maps.googleapis.com/maps/api/geocode/json?components=fi&address=${text}&radius=500&key=${googleMapsApiKey}`
 			)
 			const locationData = await location.json()
 			if (locationData.results && locationData.results.length) {
 				const [closest] = locationData.results
 				const res = await fetch(
-					`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${closest.geometry.location.lat},${closest.geometry.location.lng}&type=restaurant&radius=500&key=${apiKey}`
+					`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${closest.geometry.location.lat},${closest.geometry.location.lng}&type=restaurant&radius=500&key=${googleMapsApiKey}`
 				)
 				const data = await res.json()
 				if (data.results && data.results.length) {
@@ -84,7 +83,7 @@ const GoogleMapView = ({ route }: RouteNavigationProps<'GoogleMapView'>) => {
 	const getLocations = async (text: string) => {
 		try {
 			const res = await fetch(
-				`https://maps.googleapis.com/maps/api/geocode/json?address=${text}&radius=500&key=${apiKey}`
+				`https://maps.googleapis.com/maps/api/geocode/json?address=${text}&radius=500&key=${googleMapsApiKey}`
 			)
 			const data = await res.json()
 			if (data.results && data.results.length) {

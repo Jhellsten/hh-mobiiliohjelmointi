@@ -3,6 +3,7 @@ import { View, Text, StatusBar, StyleSheet } from 'react-native'
 import { Picker } from '@react-native-picker/picker'
 import CustomButton from '../components/CustomButton'
 import CustomInput from '../components/Input'
+import { converterApiKey } from '../env'
 
 interface Props {}
 
@@ -19,7 +20,6 @@ const EuroConverter = (props: Props) => {
 	const [convertedValue, setConvertedValue] = useState<string>('0')
 	const [userInput, setUserInput] = useState<string>('0')
 	const [selectedRate, setSelectedRate] = useState<number>(0.848602)
-	const apiKey = ''
 
 	useEffect(() => {
 		const getRates = async () => {
@@ -40,7 +40,7 @@ const EuroConverter = (props: Props) => {
 		try {
 			setRates([])
 			const res = await fetch(
-				`http://api.exchangeratesapi.io/v1/latest?access_key=${apiKey}&format=1`
+				`http://api.exchangeratesapi.io/v1/latest?access_key=${converterApiKey}&format=1`
 			)
 			const data = await res.json()
 			if (data.success === true) {

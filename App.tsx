@@ -12,12 +12,14 @@ import EuroConverter from './Screens/EuroConverter'
 import GoogleMapView from './Screens/GoogleMapView'
 import { createShoppingList } from './services/db'
 import ShoppingList from './components/ShoppinList'
+import ShoppingListFirebase from './components/ShoppingListFirebase'
 
 type RootStackParamList = {
 	Home: undefined
 	Calculator: undefined
 	CalculatorWithHistory: undefined
 	ShoppingList: undefined
+	ShoppingListFirebase: undefined
 	History: { numberList: string[] }
 	RecipeFinder: undefined
 	EuroConverter: undefined
@@ -49,6 +51,10 @@ export default function App() {
 				<Stack.Screen name='EuroConverter' component={EuroConverter} />
 				<Stack.Screen name='GoogleMapView' component={GoogleMapView} />
 				<Stack.Screen name='ShoppingList' component={ShoppingList} />
+				<Stack.Screen
+					name='ShoppingListFirebase'
+					component={ShoppingListFirebase}
+				/>
 			</Stack.Navigator>
 			{/* 
 			If we want to use Tab navigator later on
