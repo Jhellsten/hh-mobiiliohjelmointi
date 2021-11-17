@@ -61,6 +61,12 @@ export default function Home({ navigation }: RouteNavigationProps<'Home'>) {
 						handlePress={() => navigation.navigate('Contacts')}
 					/>
 				</View>
+				<View style={styles.button}>
+					<CustomButton
+						text={'Text to Speech'}
+						handlePress={() => navigation.navigate('TextToSpeech')}
+					/>
+				</View>
 			</View>
 			<StatusBar style='auto' />
 		</View>

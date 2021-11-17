@@ -3075,6 +3075,13 @@ expo-sms@~10.0.3:
   dependencies:
     expo-modules-core "~0.4.4"
 
+expo-speech@~10.0.3:
+  version "10.0.3"
+  resolved "https://registry.yarnpkg.com/expo-speech/-/expo-speech-10.0.3.tgz#27b721b7fadfc64c588b3396848413c40b1bae23"
+  integrity sha512-56D2Ks4b4/2tqKVRXuW+9AwdAJRryA3/wwlkaEHXAWTmGq8QL2IIGl7dBt6jHWX1LmF02i3RJNA/1J06kN9jRw==
+  dependencies:
+    expo-modules-core "~0.4.4"
+
 expo-sqlite@~10.0.3:
   version "10.0.3"
   resolved "https://registry.yarnpkg.com/expo-sqlite/-/expo-sqlite-10.0.3.tgz#f0785f37e75b328d2440538f826511c40d760a48"

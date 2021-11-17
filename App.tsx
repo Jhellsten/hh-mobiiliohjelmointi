@@ -14,6 +14,7 @@ import { createShoppingList } from './services/db'
 import ShoppingList from './components/ShoppinList'
 import ShoppingListFirebase from './components/ShoppingListFirebase'
 import ContactList from './Screens/Contacts'
+import TextToSpeech from './components/TextToSpeech'
 
 type RootStackParamList = {
 	Home: undefined
@@ -22,6 +23,7 @@ type RootStackParamList = {
 	ShoppingList: undefined
 	ShoppingListFirebase: undefined
 	Contacts: undefined
+	TextToSpeech: undefined
 	History: { numberList: string[] }
 	RecipeFinder: undefined
 	EuroConverter: undefined
@@ -58,6 +60,7 @@ export default function App() {
 					component={ShoppingListFirebase}
 				/>
 				<Stack.Screen name='Contacts' component={ContactList} />
+				<Stack.Screen name='TextToSpeech' component={TextToSpeech} />
 			</Stack.Navigator>
 			{/* 
 			If we want to use Tab navigator later on
