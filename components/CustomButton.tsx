@@ -1,16 +1,29 @@
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity } from 'react-native'
+import { Button, Icon } from 'react-native-elements'
 
 interface Props {
 	handlePress: (...args: any[]) => any
 	text: string
+	icon?: string
 }
 
-const CustomButton = ({ handlePress, text }: Props) => {
-	return (
-		<TouchableOpacity onPress={() => handlePress('-')} style={styles.button}>
-			<Text style={styles.buttonText}>{text}</Text>
-		</TouchableOpacity>
+const CustomButton = ({ handlePress, text, icon }: Props) => {
+	return icon ? (
+		<Button
+			title={text}
+			titleStyle={styles.buttonText}
+			onPress={() => handlePress('-')}
+			// style={styles.button}
+			icon={<Icon name={icon} size={20} color={'white'} />}
+		></Button>
+	) : (
+		<Button
+			title={text}
+			titleStyle={styles.buttonText}
+			onPress={() => handlePress('-')}
+			// style={styles.button}
+		></Button>
 	)
 }
 
@@ -29,5 +42,6 @@ export const styles = StyleSheet.create({
 	},
 	buttonText: {
 		color: 'white',
+		paddingLeft: 10,
 	},
 })

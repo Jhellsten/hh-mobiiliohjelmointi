@@ -23,6 +23,8 @@ import {
 } from '../env'
 import CustomButton from './CustomButton'
 import { ShoppingListItem, ShoppingListItemSaveType } from '../services/db'
+import { Input, ListItem } from 'react-native-elements'
+import { ScreenWidth } from 'react-native-elements/dist/helpers'
 
 export default function ShoppingListFirebase() {
 	// InitializeFirebasewithyourown config parameters
@@ -66,6 +68,9 @@ export default function ShoppingListFirebase() {
 				})
 				setList(items)
 			})
+			;() => {
+				unsubscribe()
+			}
 		} catch (error) {
 			alert(error)
 		}
@@ -117,16 +122,18 @@ export default function ShoppingListFirebase() {
 			<View style={styles.inputContainer}>
 				<View>
 					<Text>{'Product'}</Text>
-					<TextInput
-						style={styles.input}
+					<Input
+						// style={styles.input}
+						placeholder={'Product'}
 						onChangeText={(value) => setListText(value)}
 						value={listText}
 					/>
 				</View>
 				<View>
 					<Text>{'Amount'}</Text>
-					<TextInput
-						style={[styles.input, styles.amountInput]}
+					<Input
+						// style={[styles.input, styles.amountInput]}
+						placeholder={'Amount'}
 						onChangeText={(value) => setListAmount(value)}
 						value={listAmount}
 						keyboardType={'number-pad'}
@@ -137,6 +144,7 @@ export default function ShoppingListFirebase() {
 				<View style={styles.button}>
 					<CustomButton
 						text={'Save'}
+						icon='save'
 						handlePress={() => {
 							handleSaveItem({ product: listText, amount: listAmount })
 						}}
@@ -153,17 +161,23 @@ export default function ShoppingListFirebase() {
 				}}
 				renderItem={({ item }: any) => {
 					return (
-						<View key={item.id} style={styles.itemStyle}>
-							<Text style={styles.shoppinglistItem} key={item.id}>
-								{item.product}, {item.amount}
-							</Text>
-							<Text
+						<ListItem
+							style={{ width: ScreenWidth * 0.95 }}
+							key={item.id}
+							bottomDivider
+						>
+							<ListItem.Content>
+								<ListItem.Title>{item.product}</ListItem.Title>
+								<ListItem.Subtitle>{item.amount}</ListItem.Subtitle>
+							</ListItem.Content>
+							<ListItem.Chevron
+								name='trash'
+								color={'red'}
+								size={20}
+								style={{ marginLeft: 'auto' }}
 								onPress={() => deleteItem(item.id)}
-								style={styles.itemTextStyle}
-							>
-								{'Bought'}
-							</Text>
-						</View>
+							/>
+						</ListItem>
 					)
 				}}
 			/>
