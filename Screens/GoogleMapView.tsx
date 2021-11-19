@@ -7,7 +7,7 @@ import CustomButton from '../components/CustomButton'
 import { RouteNavigationProps } from '../App'
 import { googleMapsApiKey } from '../env'
 
-type MarkerItem = {
+export type MarkerItem = {
 	latitude: number
 	longitude: number
 	title: string

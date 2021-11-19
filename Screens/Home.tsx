@@ -45,6 +45,12 @@ export default function Home({ navigation }: RouteNavigationProps<'Home'>) {
 				</View>
 				<View style={styles.button}>
 					<CustomButton
+						text={'My Places App'}
+						handlePress={() => navigation.navigate('MyPlaces')}
+					/>
+				</View>
+				<View style={styles.button}>
+					<CustomButton
 						text={'Shopping list with SQL lite'}
 						handlePress={() => navigation.navigate('ShoppingList')}
 					/>

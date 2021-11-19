@@ -15,6 +15,8 @@ import ShoppingList from './components/ShoppinList'
 import ShoppingListFirebase from './components/ShoppingListFirebase'
 import ContactList from './Screens/Contacts'
 import TextToSpeech from './components/TextToSpeech'
+import MyPlacesApp from './Screens/MyPlacesApp'
+import MyPlaces from './components/MyPlaces'
 
 type RootStackParamList = {
 	Home: undefined
@@ -28,6 +30,8 @@ type RootStackParamList = {
 	RecipeFinder: undefined
 	EuroConverter: undefined
 	GoogleMapView: { restaurants: boolean }
+	MyPlacesApp: { location: { lat: number; lng: number }; title: string }
+	MyPlaces: undefined
 }
 
 export type RouteNavigationProps<T extends keyof RootStackParamList> =
@@ -54,6 +58,8 @@ export default function App() {
 				<Stack.Screen name='RecipeFinder' component={RecipeFinder} />
 				<Stack.Screen name='EuroConverter' component={EuroConverter} />
 				<Stack.Screen name='GoogleMapView' component={GoogleMapView} />
+				<Stack.Screen name='MyPlacesApp' component={MyPlacesApp} />
+				<Stack.Screen name='MyPlaces' component={MyPlaces} />
 				<Stack.Screen name='ShoppingList' component={ShoppingList} />
 				<Stack.Screen
 					name='ShoppingListFirebase'
